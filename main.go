@@ -1,17 +1,27 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
-)
 
-// Build-time variables, that are set at compile time with ldflags
-var (
-	Version   = "unknown-version"
-	GitCommit = "unknown-commit"
-	BuildTime = "unknown-buildtime"
+	"github.com/enginyoyen/mimic/pkg/cmd"
+	"github.com/enginyoyen/mimic/pkg/mapping"
+	"github.com/enginyoyen/mimic/pkg/server"
 )
 
 func main() {
-	fmt.Fprintf(os.Stdout, "You are using mimic with version:%s, gitcommit:%s, build:%s", Version, GitCommit, BuildTime)
+	config, app := cmd.NewApp()
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	files, err := mapping.WalkFiles(config.MappingDirectory)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	mappings := mapping.MapRequests(files)
+
+	server.Serve(config, mappings)
 }

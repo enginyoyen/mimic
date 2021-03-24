@@ -1,0 +1,10 @@
+{
+    "request":{
+        "url": "/health",
+        "method" : "GET"
+    },
+    "response":{
+        "status": 200, 
+        "body": "All healthy!" 
+    }
+}
