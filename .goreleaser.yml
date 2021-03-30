@@ -20,7 +20,7 @@ archives:
 checksum:
   name_template: 'checksums.txt'
 snapshot:
-  name_template: "{{ .Tag }}-next"
+  name_template: "{{ .Tag }}"
 changelog:
   sort: asc
   filters:
@@ -34,8 +34,9 @@ brews:
     tap:
       owner: enginyoyen
       name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
-    url_template: "https://github.com/enginyoyen/mimic/releases/{{ .Tag }}/{{ .ArtifactName }}"
+    url_template: "https://github.com/enginyoyen/mimic/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     folder: Formula
     homepage: "https://github.com/enginyoyen/mimic"
     description: "Mimic is standalone HTTP-based mock server."
@@ -43,9 +44,8 @@ brews:
     skip_upload: true
 
     test: |
-      system "#{bin}/program --version"
-      ...
+      system "#{bin}/mimic --version"
 
     install: |
       bin.install "program"
-      ...
+    
