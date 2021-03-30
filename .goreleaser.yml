@@ -34,14 +34,15 @@ brews:
     tap:
       owner: enginyoyen
       name: homebrew-tap
-      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
-
     url_template: "https://github.com/enginyoyen/mimic/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     folder: Formula
     homepage: "https://github.com/enginyoyen/mimic"
     description: "Mimic is standalone HTTP-based mock server."
     license: "MIT"
-    skip_upload: false
+
+    commit_author:
+      name: goreleaserbot
+      email: dev@enginyoyen.com
 
     test: |
       system "#{bin}/mimic --version"
