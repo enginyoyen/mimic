@@ -1,0 +1,15 @@
+{
+    "request":{
+        "url": "/tell-me",
+        "method" : "POST",
+        "body": "Some message"
+
+    },
+    "response":{
+        "status": 200, 
+        "body": "Here it is!",
+        "headers":{
+            "Content-Type":"text/plain"
+        }
+    }
+}
