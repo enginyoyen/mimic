@@ -41,6 +41,7 @@ brews:
     homepage: "https://github.com/enginyoyen/mimic"
     description: "Mimic is standalone HTTP-based mock server."
     license: "MIT"
+    skip_upload: false
 
     test: |
       system "#{bin}/mimic --version"
