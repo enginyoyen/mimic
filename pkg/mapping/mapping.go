@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 )
 
 type Mapping struct {
@@ -19,8 +20,9 @@ type Request struct {
 }
 
 type Response struct {
-	Status int
-	Body   string
+	Status    int
+	Body      json.RawMessage
+	WithDelay time.Duration
 }
 
 func MapRequests(files *[]string) *[]Mapping {

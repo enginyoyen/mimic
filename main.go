@@ -22,6 +22,5 @@ func main() {
 	}
 
 	mappings := mapping.MapRequests(files)
-
 	server.Serve(config, mappings)
 }
