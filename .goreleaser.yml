@@ -48,5 +48,5 @@ brews:
       system "#{bin}/mimic --version"
 
     install: |
-      bin.install "program"
+      bin.install "mimic"
     
