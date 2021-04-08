@@ -1,0 +1,16 @@
+{
+    "request":{
+        "url": "/user",
+        "method" : "GET",
+        "headers":{
+            "Authorization": "token someInvalidToken"
+        }
+    },
+    "response":{
+        "status": 401, 
+        "body": {
+            "message": "Requires authentication",
+            "documentation_url": "https://docs.github.com/rest/reference/users#get-the-authenticated-user"
+          }
+    }
+}

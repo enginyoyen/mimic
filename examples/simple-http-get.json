@@ -2,13 +2,9 @@
     "request":{
         "url": "/ping",
         "method" : "GET"
-
     },
     "response":{
         "status": 200, 
-        "body": "pong",
-        "headers":{
-            "Content-Type":"text/plain"
-        }
+        "body": "pong"
     }
 }

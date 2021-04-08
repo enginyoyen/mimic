@@ -10,6 +10,6 @@
         "headers":{
             "Content-Type":"text/plain"
         },
-        "withDelay": 2000
+        "withDelay": 4000
     }
 }
