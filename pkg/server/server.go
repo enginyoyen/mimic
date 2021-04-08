@@ -22,7 +22,11 @@ func Serve(config *cmd.Config, maps *[]mapping.Mapping) {
 
 	for _, v := range *mappings {
 		m := v
-		r.HandleFunc(m.Request.Url, func(w http.ResponseWriter, r *http.Request) {
+		route := r.HandleFunc(m.Request.Url, func(w http.ResponseWriter, r *http.Request) {
+			// Set headers in the
+			for header, value := range m.Response.Headers {
+				w.Header().Set(header, value)
+			}
 			w.WriteHeader(m.Response.Status)
 			body := string(m.Response.Body)
 			body = strings.TrimLeft(body, "\"")
@@ -32,6 +36,10 @@ func Serve(config *cmd.Config, maps *[]mapping.Mapping) {
 				time.Sleep(time.Millisecond * m.Response.WithDelay)
 			}
 		}).Methods(m.Request.Method)
+		//Set request headers
+		for header, value := range m.Request.Headers {
+			route.Headers(header, value)
+		}
 	}
 
 	addr := config.BindAddress + ":" + strconv.Itoa(config.Port)

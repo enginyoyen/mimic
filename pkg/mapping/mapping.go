@@ -15,14 +15,16 @@ type Mapping struct {
 }
 
 type Request struct {
-	Url    string
-	Method string
+	Url     string
+	Method  string
+	Headers map[string]string
 }
 
 type Response struct {
 	Status    int
 	Body      json.RawMessage
 	WithDelay time.Duration
+	Headers   map[string]string
 }
 
 func MapRequests(files *[]string) *[]Mapping {
