@@ -6,8 +6,8 @@ Mimic can be used for rapid development of an existing or non existing API, supp
 ## Installation 
 You can install `mimic` via `brew` 
 ```
-brew tap  enginyoyen/homebrew-repo
-brew install enginyoyen/homebrew-repo/mimic
+brew tap  enginyoyen/homebrew-tap 
+brew install enginyoyen/homebrew-tap/mimic
 ```
 
 or download the executable binary from the release page
